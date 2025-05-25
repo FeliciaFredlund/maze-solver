@@ -4,35 +4,25 @@ while showing the wrong paths it took.
 '''
 
 from graphics import Window
-from cell import Cell
+from maze import Maze
 
-def main():
-    win = Window(800, 600)
-    
-    c1 = Cell(win, 50, 50, 100, 100)
-    c1.has_right_wall = False
-    c1.draw()
+def main():    
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
 
-    c2 = Cell(win, 100, 50, 150, 100)
-    c2.has_left_wall = False
-    c2.has_bottom_wall = False
-    c2.draw()
 
-    c1.draw_move(c2)
+    win = Window(screen_x, screen_y)
 
-    c3 = Cell(win, 100, 100, 150, 150)
-    c3.has_top_wall = False
-    c3.has_right_wall = False
-    c3.draw()
-
-    c2.draw_move(c3)
-
-    c4 = Cell(win, 150, 100, 200, 150)
-    c4.has_left_wall = False
-    c4.draw()
-
-    c3.draw_move(c4, True)
-
+    maze = Maze(
+        margin, margin, 
+        num_rows, num_cols,
+        (screen_x - 2 * margin) // num_cols,
+        (screen_y - 2 * margin) // num_rows,
+        win
+        )
     
     win.wait_for_close()
 
