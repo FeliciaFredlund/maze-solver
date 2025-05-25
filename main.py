@@ -9,24 +9,30 @@ from cell import Cell
 def main():
     win = Window(800, 600)
     
-    a = Cell(win)
-    a.draw(1, 51, 1, 51)
+    c1 = Cell(win, 50, 50, 100, 100)
+    c1.has_right_wall = False
+    c1.draw()
 
-    a = Cell(win)
-    a.has_bottom_wall = False
-    a.draw(60, 110, 1, 51)
+    c2 = Cell(win, 100, 50, 150, 100)
+    c2.has_left_wall = False
+    c2.has_bottom_wall = False
+    c2.draw()
 
-    a = Cell(win)
-    a.has_top_wall = False
-    a.draw(120, 170, 1, 51)
+    c1.draw_move(c2)
 
-    a = Cell(win)
-    a.has_left_wall = False
-    a.draw(180, 230, 1, 51)
+    c3 = Cell(win, 100, 100, 150, 150)
+    c3.has_top_wall = False
+    c3.has_right_wall = False
+    c3.draw()
 
-    a = Cell(win)
-    a.has_right_wall = False
-    a.draw(240, 290, 1, 51)
+    c2.draw_move(c3)
+
+    c4 = Cell(win, 150, 100, 200, 150)
+    c4.has_left_wall = False
+    c4.draw()
+
+    c3.draw_move(c4, True)
+
     
     win.wait_for_close()
 
