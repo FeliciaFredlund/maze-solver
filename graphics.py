@@ -27,7 +27,7 @@ class Line():
 
 
 class Window():
-    def __init__(self, width, height):
+    def __init__(self, width: int, height: int):
         '''
         Creates a tkinter window for the program.
         '''
@@ -46,7 +46,7 @@ class Window():
         self.__root.update_idletasks()
         self.__root.update()
 
-    def draw_line(self, line: Line, fill_color: str):
+    def draw_line(self, line: Line, fill_color="black"):
         '''Uses Line.draw() to draw a line'''
         line.draw(self.__canvas, fill_color)
 
