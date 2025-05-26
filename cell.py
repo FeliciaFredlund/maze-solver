@@ -8,7 +8,7 @@ from __future__ import annotations
 from graphics import Window, Point, Line
 
 class Cell():
-    def __init__(self, window: Window, x1=-1, y1=-1, x2=-1, y2=-1):
+    def __init__(self, window: Window = None, x1=-1, y1=-1, x2=-1, y2=-1):
         '''This makes up every square in maze.'''
         self.has_left_wall = True
         self.has_right_wall = True

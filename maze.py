@@ -12,7 +12,7 @@ class Maze():
             x1: int, y1: int, 
             num_rows: int, num_cols: int, 
             cell_size_x: int, cell_size_y: int, 
-            win: Window
+            win: Window = None
         ):
         '''Initiates the basic settings for the maze'''
         
