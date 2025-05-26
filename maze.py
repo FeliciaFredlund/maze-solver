@@ -34,6 +34,7 @@ class Maze():
         self.__cells = [] 
         
         self.__create_cells()
+        self.__break_entrance_and_exit()
 
     def __create_cells(self):
         '''Creates all the cells of the maze and draws them one after the other'''
@@ -67,3 +68,13 @@ class Maze():
 
         self.__win.redraw()
         time.sleep(0.05)
+
+    def __break_entrance_and_exit(self):
+        '''Remove walls to create entrance and exit'''
+        # Entrance
+        self.__cells[0][0].has_top_wall = False
+        self.__draw_cell(0, 0)
+
+        # Exit
+        self.__cells[-1][-1].has_bottom_wall = False
+        self.__draw_cell(self.__num_cols - 1, self.__num_rows - 1)

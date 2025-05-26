@@ -43,6 +43,19 @@ class Tests(unittest.TestCase):
             margin + (2 * cell_size) + cell_size
         )
 
+    def test_maze_break_entrance_and_exit(self):
+        margin = 10
+        num_cols = 12
+        num_rows = 16
+        cell_size = 20
+        m3 = Maze(margin, margin, num_rows, num_cols, cell_size, cell_size)
+        self.assertFalse(
+            m3._Maze__cells[0][0].has_top_wall
+        )
+        self.assertFalse(
+            m3._Maze__cells[num_cols - 1][num_rows - 1].has_bottom_wall
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

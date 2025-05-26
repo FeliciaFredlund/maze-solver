@@ -32,17 +32,21 @@ class Cell():
         point_bottom_left = Point(self.__x1, self.__y2)
         point_bottom_right = Point(self.__x2, self.__y2)
 
-        if self.has_left_wall:       
-            self.__win.draw_line(Line(point_top_left, point_bottom_left), "black")
+        # Left wall
+        color = "black" if self.has_left_wall else "white"       
+        self.__win.draw_line(Line(point_top_left, point_bottom_left), color)
 
-        if self.has_right_wall:       
-            self.__win.draw_line(Line(point_top_right, point_bottom_right), "black")
+        # Right wall
+        color = "black" if self.has_right_wall else "white"       
+        self.__win.draw_line(Line(point_top_right, point_bottom_right), color)
 
-        if self.has_top_wall:       
-            self.__win.draw_line(Line(point_top_left, point_top_right), "black")
+        # Top wall
+        color = "black" if self.has_top_wall else "white"       
+        self.__win.draw_line(Line(point_top_left, point_top_right), color)
 
-        if self.has_bottom_wall:       
-            self.__win.draw_line(Line(point_bottom_left, point_bottom_right), "black")
+        # Bottom wall
+        color = "black" if self.has_bottom_wall else "white"       
+        self.__win.draw_line(Line(point_bottom_left, point_bottom_right), color)
             
     def draw_move(self, to_cell: Cell, undo=False):
         '''Draws a line between the centers of two cells'''
