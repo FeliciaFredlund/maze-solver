@@ -7,8 +7,8 @@ from graphics import Window
 from maze import Maze
 
 def main():    
-    num_rows = 12
-    num_cols = 16
+    num_rows = 10
+    num_cols = 12
     margin = 50
     screen_x = 800
     screen_y = 600
@@ -21,7 +21,8 @@ def main():
         num_rows, num_cols,
         (screen_x - 2 * margin) // num_cols,
         (screen_y - 2 * margin) // num_rows,
-        win
+        win,
+        seed=10
         )
     
     win.wait_for_close()
