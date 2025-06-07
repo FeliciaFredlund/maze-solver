@@ -22,8 +22,9 @@ def main():
         (screen_x - 2 * margin) // num_cols,
         (screen_y - 2 * margin) // num_rows,
         win,
-        seed=10
         )
+    
+    maze.solve()
     
     win.wait_for_close()
 

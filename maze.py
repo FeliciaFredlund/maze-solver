@@ -128,7 +128,7 @@ class Maze():
                 cell.visited = False
 
     def solve(self):
-        return self._solve_r(0, 0)
+        return self.__solve_r(0, 0)
 
     def __solve_r(self, col_index, row_index):
         self.__animate()
@@ -138,3 +138,29 @@ class Maze():
 
         if col_index == self.__num_cols - 1 and row_index == self.__num_rows - 1:
             return True
+        
+        directions = []
+        if col_index - 1 >= 0 and not current_cell.has_left_wall  and not self.__cells[col_index - 1][row_index].visited:
+            directions.append((col_index - 1, row_index))
+        if col_index + 1 < self.__num_cols and not current_cell.has_right_wall  and not self.__cells[col_index + 1][row_index].visited:
+            directions.append((col_index + 1, row_index))
+        if row_index - 1 >= 0 and not current_cell.has_top_wall  and not self.__cells[col_index][row_index - 1].visited:
+            directions.append((col_index, row_index - 1)) 
+        if row_index + 1 < self.__num_rows and not current_cell.has_bottom_wall  and not self.__cells[col_index][row_index + 1].visited:
+            directions.append((col_index, row_index + 1))
+        
+        for direction in directions:
+            new_cell_col_index = direction[0]
+            new_cell_row_index = direction[1]
+            new_cell = self.__cells[new_cell_col_index][new_cell_row_index]
+            
+            current_cell.draw_move(new_cell)
+
+            true_path = self.__solve_r(new_cell_col_index, new_cell_row_index)
+
+            if true_path:
+                return true_path
+            else:
+                current_cell.draw_move(new_cell, True)
+        
+        return False
